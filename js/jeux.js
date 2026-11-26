@@ -12,7 +12,7 @@ function Game() {
     // Append the canvas node to our container
     $container.insertBefore(this.viewport, $container.firstChild);
 
-    // Toss some text into our canvas
+    // un peu de texte
     this.context.font = '32px Arial';
     this.context.fillText('It\'s dangerous to travel this route alone.', 5, 50, 800);
 
