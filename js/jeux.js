@@ -17,7 +17,7 @@ const player = {
     width: 30,
     height: 50,
     vy: 0, // Vitesse verticale
-    gravity: 0.6,
+    gravity: 0.4,
     jumpForce: -15,
     isJumping: false,
     color: '#000000', // Bleu
@@ -51,7 +51,7 @@ const player = {
 
 // LES OBSTACLES
 let obstacles = [];
-const obstacleWidth = 20;
+const obstacleWidth = 40;
 const obstacleHeight = 40;
 const obstacleImage = new Image();
 obstacleImage.src = 'thibaud.jpeg';
