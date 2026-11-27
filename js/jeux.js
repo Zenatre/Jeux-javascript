@@ -53,7 +53,8 @@ const player = {
 let obstacles = [];
 const obstacleWidth = 20;
 const obstacleHeight = 40;
-
+const obstacleImage = new Image();
+obstacleImage.src = 'thibaud.jpeg';
 function spawnObstacle() {
     // Apparaît à droite de l'écran
     obstacles.push({
@@ -81,9 +82,14 @@ function update() {
     if (isGameOver) return;
 
     player.update();
+     const last = obstacles[obstacles.length - 1];
+    const farEnough = !last || last.x < canvas.width - 250;
+    if (farEnough && Math.random() < 0.01) {
+        spawnObstacle();
+    }
      bgX -= gameSpeed * 0.5;
      if (gameSpeed < 15) {
-        gameSpeed += 0.002;
+        gameSpeed += 0.004;
     }
     if (bgX <= -canvas.width) {
         bgX = 0;
@@ -132,11 +138,9 @@ function draw() {
 
 
 
-obstacles.forEach(obs => {
-        ctx.fillStyle = obs.color;
-        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+    obstacles.forEach(obs => {
+        ctx.drawImage(obstacleImage, obs.x, obs.y, obs.width, obs.height);
     });
-
     // Dessiner le score
     ctx.fillStyle = '#000';
     ctx.font = '20px Arial';
